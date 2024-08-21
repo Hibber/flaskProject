@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Appointments - Task Reminder App{% endblock %}
+
+{% block content %}
+    <h2>Your Appointments</h2>
+    <a href="{{ url_for('add_appointment') }}" class="btn btn-primary">+ Add Appointment</a>
+    <ul class="appointment-list">
+        {% for appt in appointments %}
+        <li>
+            <div class="appointment-info">
+                <span class="location">{{ appt.location }}</span>
+                <span class="date">{{ appt.date.strftime('%Y-%m-%d %H:%M') }}</span>
+            </div>
+            <a href="{{ url_for('delete_appointment', id=appt.id) }}" class="btn-delete">Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/8c0cb4c0-83e2-482e-9bae-f932935d1e5c/console.sql" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/RxNorm_full_08052024/prescribe/scripts/mysql/Indexes_mysql_rxn.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/RxNorm_full_08052024/prescribe/scripts/mysql/Load_scripts_mysql_rxn_unix.sql" dialect="SQLite" />
+    <file url="PROJECT" dialect="SQLite" />
+  </component>
+</project>

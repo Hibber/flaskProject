@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Add Appointment - Task Reminder App{% endblock %}
+
+{% block content %}
+    <div class="form-container">
+        <h2>Add Appointment</h2>
+        <form method="POST">
+            <input type="text" id="location-input" name="location" placeholder="Location" required>
+            <input type="datetime-local" name="date" required>
+            <button type="submit" class="btn-submit">Add Appointment</button>
+        </form>
+    </div>
+
+    <!-- Initialize Google Places Autocomplete -->
+    <script>
+        function initialize() {
+            const input = document.getElementById('location-input');
+            const autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.setFields(['address_components', 'geometry', 'name']);
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+{% endblock %}

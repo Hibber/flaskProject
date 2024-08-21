@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Medications - Task Reminder App{% endblock %}
+
+{% block content %}
+    <h2>Your Medications</h2>
+    <a href="{{ url_for('add_medication') }}" class="btn btn-primary">+ Add Medication</a>
+    <ul class="medication-list">
+        {% for med in medications %}
+        <li>
+            <div class="medication-info">
+                <span>{{ med.name }}</span>
+                <span class="frequency">Frequency: {{ med.frequency }}</span>
+            </div>
+            <a href="{{ url_for('delete_medication', id=med.id) }}" class="btn-delete">Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,521 @@
+/* Global Styles */
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: #3498db;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Navigation Bar */
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #3498db;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    transition: background-color 0.3s ease, box-shadow 0.1s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.btn-secondary {
+    background-color: #95a5a6;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #7f8c8d;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+/* Medication List */
+.medication-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.medication-list li {
+    background-color: #ffffff;
+    border: 1px solid #bdc3c7;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.2s ease;
+}
+
+.medication-list li:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.medication-info {
+    font-size: 18px;
+    color: #2c3e50;
+}
+
+.medication-info .frequency {
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b;
+}
+
+/* Footer */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+}
+
+body.dark-mode .container {
+    background-color: #34495e;
+}
+
+body.dark-mode .btn {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .btn-primary {
+    background-color: #2980b9;
+}
+
+body.dark-mode .btn-secondary {
+    background-color: #7f8c8d;
+}
+
+body.dark-mode .btn-danger {
+    background-color: #c0392b;
+}
+
+body.dark-mode .medication-list li {
+    background-color: #34495e;
+    border: 1px solid #95a5a6;
+}
+
+body.dark-mode .medication-info {
+    color: #ecf0f1;
+}
+
+body.dark-mode .medication-info .frequency {
+    color: #bdc3c7;
+}
+
+body.dark-mode footer {
+    background-color: #1c2833;
+}
+/* Floating Dark Mode Toggle Button */
+.dark-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    z-index: 1001; /* Ensure it stays above the footer */
+}
+
+.dark-mode-toggle:hover {
+    background-color: #2980b9;
+    transform: scale(1.1);
+
+}
+/* Appointment List Styling */
+.appointment-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.appointment-list li {
+    background-color: #ffffff;
+    border: 1px solid #bdc3c7;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.2s ease;
+}
+
+.appointment-list li:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.appointment-info {
+    font-size: 18px;
+    color: #2c3e50;
+}
+
+.appointment-info .location, .appointment-info .date {
+    font-size: 16px;
+    color: #7f8c8d;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b;
+}
+
+body.dark-mode .appointment-list li {
+    background-color: #34495e;
+    border: 1px solid #95a5a6;
+}
+
+body.dark-mode .appointment-info {
+    color: #ecf0f1;
+}
+
+body.dark-mode .appointment-info .location, body.dark-mode .appointment-info .date {
+    color: #bdc3c7;
+}
+/* Login Page Styling */
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-size: 24px;
+}
+
+body.dark-mode .login-container h2 {
+    color: #ecf0f1;
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-container input[type="email"],
+.login-container input[type="password"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    transition: border-color 0.3s ease;
+}
+
+.login-container input[type="email"]:focus,
+.login-container input[type="password"]:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.login-container .btn-login {
+    background-color: #3498db;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-container .btn-login:hover {
+    background-color: #2980b9;
+}
+
+body.dark-mode .login-container {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+}
+
+body.dark-mode .login-container input[type="email"],
+body.dark-mode .login-container input[type="password"] {
+    background-color: #34495e;
+    color: #ecf0f1;
+    border: 1px solid #7f8c8d;
+}
+
+body.dark-mode .login-container .btn-login {
+    background-color: #2980b9;
+}
+/* Register Page Styling */
+.register-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.register-container h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-size: 24px;
+}
+
+.register-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.register-container input[type="text"],
+.register-container input[type="email"],
+.register-container input[type="password"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    transition: border-color 0.3s ease;
+}
+
+.register-container input:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.register-container .btn-register {
+    background-color: #3498db;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.register-container .btn-register:hover {
+    background-color: #2980b9;
+}
+
+body.dark-mode .register-container {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+}
+
+body.dark-mode .register-container input {
+    background-color: #34495e;
+    color: #ecf0f1;
+    border: 1px solid #7f8c8d;
+}
+
+body.dark-mode .register-container .btn-register {
+    background-color: #2980b9;
+}
+/* Form Container Styling */
+.form-container {
+    max-width: 500px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-size: 24px;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="datetime-local"],
+.form-container input[type="email"],
+.form-container input[type="password"],
+.form-container textarea {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    transition: border-color 0.3s ease;
+}
+
+.form-container input:focus,
+.form-container textarea:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.form-container .btn-submit {
+    background-color: #3498db;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-container .btn-submit:hover {
+    background-color: #2980b9;
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .form-container {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+}
+
+body.dark-mode .form-container input,
+body.dark-mode .form-container textarea {
+    background-color: #34495e;
+    color: #ecf0f1;
+    border: 1px solid #7f8c8d;
+}
+
+body.dark-mode .form-container .btn-submit {
+    background-color: #2980b9;
+}

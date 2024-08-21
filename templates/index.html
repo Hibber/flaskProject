@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Task Reminder App{% endblock %}
+
+{% block content %}
+    <div class="welcome-section">
+        <h1>Welcome to Task Reminder App</h1>
+        <p>Manage your medications and appointments easily with our app. Stay on track with your health and never miss a dose or appointment.</p>
+        <div class="cta-buttons">
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('medications') }}" class="btn btn-primary"><i class="fas fa-pills"></i> View Medications</a>
+                <a href="{{ url_for('appointments') }}" class="btn btn-secondary"><i class="fas fa-calendar-alt"></i> View Appointments</a>
+            {% else %}
+                <a href="{{ url_for('register') }}" class="btn btn-primary"><i class="fas fa-user-plus"></i> Register Now</a>
+                <a href="{{ url_for('login') }}" class="btn btn-secondary"><i class="fas fa-sign-in-alt"></i> Login</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Add Medication - Task Reminder App{% endblock %}
+
+{% block content %}
+    <div class="form-container">
+        <h2>Add Medication</h2>
+        <form method="POST">
+            <input type="text" id="medication-name" name="name" placeholder="Medication Name" required>
+            <input type="text" name="frequency" placeholder="Frequency (e.g., Daily, Weekly)" required>
+            <button type="submit" class="btn-submit">Add Medication</button>
+        </form>
+        <ul id="suggestions" style="list-style: none; padding: 0; margin-top: 10px; max-height: 150px; overflow-y: auto;"></ul>
+    </div>
+
+    <!-- JavaScript for RxNorm Prescribable API integration -->
+    <script>
+        document.getElementById('medication-name').addEventListener('input', function() {
+            const query = this.value;
+            if (query.length > 2) {
+                fetch(`https://rxnav.nlm.nih.gov/REST/rxcui.json?name=${query}&search=1`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const suggestions = document.getElementById('suggestions');
+                        suggestions.innerHTML = '';
+                        if (data.idGroup.rxnormId) {
+                            const rxcuis = data.idGroup.rxnormId;
+                            rxcuis.forEach(rxcui => {
+                                fetch(`https://rxnav.nlm.nih.gov/REST/rxcui/${rxcui}/properties.json`)
+                                    .then(response => response.json())
+                                    .then(propertiesData => {
+                                        const name = propertiesData.properties.name;
+                                        const genericName = propertiesData.properties.genericName || 'N/A';
+                                        const brandName = propertiesData.properties.synonym || 'N/A';
+                                        const dosageForm = propertiesData.properties.dosageForm || 'No dosage form available';
+                                        const strength = propertiesData.properties.strength || 'No strength available';
+
+                                        const li = document.createElement('li');
+                                        li.innerHTML = `<strong>${name}</strong><br>
+                                                        <em>Generic Name:</em> ${genericName}<br>
+                                                        <em>Brand Name:</em> ${brandName}<br>
+                                                        <em>Dosage Form:</em> ${dosageForm}<br>
+                                                        <em>Strength:</em> ${strength}`;
+                                        li.style.padding = '10px';
+                                        li.style.borderBottom = '1px solid #ccc';
+                                        li.style.cursor = 'pointer';
+                                        li.addEventListener('click', function() {
+                                            document.getElementById('medication-name').value = name;
+                                            suggestions.innerHTML = '';
+                                        });
+                                        suggestions.appendChild(li);
+                                    })
+                                    .catch(error => console.error('Error fetching properties:', error));
+                            });
+                        } else {
+                            const li = document.createElement('li');
+                            li.textContent = 'No suggestions found';
+                            li.style.padding = '10px';
+                            suggestions.appendChild(li);
+                        }
+                    })
+                    .catch(error => console.error('Error fetching suggestions:', error));
+            } else {
+                document.getElementById('suggestions').innerHTML = '';
+            }
+        });
+    </script>
+{% endblock %}

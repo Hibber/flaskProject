@@ -1,0 +1,10 @@
+@app.route('/test_email')
+@login_required
+def test_email():
+    send_reminder_email(
+        subject='Test Email from Task Reminder App',
+        recipient=current_user.email,
+        body='This is a test email to verify that SendGrid SMTP relay is working.'
+    )
+    flash('Test email sent!', 'success')
+    return redirect(url_for('home'))
