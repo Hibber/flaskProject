@@ -1,0 +1,8 @@
+requests~=2.32.3
+python-dotenv~=1.0.1
+Flask~=3.0.3
+Flask-Bcrypt~=1.0.1
+Flask-Login~=0.6.3
+sendgrid~=6.11.0
+SQLAlchemy~=2.0.32
+twilio~=9.2.3
